@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/vaco_symbol.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tick Tack Toe</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+      rel="stylesheet"
+    />
+    <link href="./src/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <!-- 씬 스타트 -->
+      <div class="scene-start flex">
+        <h1 class="title">Vanilla Tic Tac Toe</h1>
+        <div class="setting">
+          <div id="player1" class="player-box">
+            <div class="player-status">
+              <div class="player-name">Player 1</div>
+              <div class="align">
+                <label id="label">:</label>
+                <input
+                  class="player-attack-priority"
+                  role="switch"
+                  type="checkbox"
+                />
+              </div>
+            </div>
+            <div class="player-view-box">
+              <div class="player-current-view">
+                <div class="player-current-shape">
+                  <!-- player 1 디폴트 모양: 엑스, 블루 -->
+                  <svg
+                    width="100%"
+                    viewBox="0 0 203 203"
+                    fill="#2365FF"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M65.2374 101.5L0.533447 166.204L36.7961 202.467L101.5 137.763L166.204 202.467L202.467 166.204L137.763 101.5L202.467 36.7961L166.204 0.533417L101.5 65.2373L36.7961 0.533425L0.533455 36.7961L65.2374 101.5Z"
+                    />
+                  </svg>
+                </div>
+                <input type="color" class="player-color-selector" />
+              </div>
+              <div class="player-select-shape-options">
+                <ul class="shape-options">
+                  <!-- 원 -->
+                  <li>
+                    <svg
+                      id="circle"
+                      width="100%"
+                      viewBox="0 0 203 203"
+                      fill="#D9D9D9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.533447"
+                        y="0.533417"
+                        width="201.933"
+                        height="201.933"
+                        rx="100.967"
+                      />
+                    </svg>
+                  </li>
+                  <!-- 세모 -->
+                  <li id="triangle">
+                    <svg
+                      width="100%"
+                      viewBox="0 0 233 203"
+                      fill="#D9D9D9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M116.5 0.533417L232.967 202.26H0.0328369L116.5 0.533417Z"
+                      />
+                    </svg>
+                  </li>
+                  <!-- 네모 -->
+                  <li id="rectangle">
+                    <svg
+                      width="100%"
+                      viewBox="0 0 203 203"
+                      fill="#D9D9D9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.533447"
+                        y="0.533424"
+                        width="201.933"
+                        height="201.933"
+                      />
+                    </svg>
+                  </li>
+                  <!-- 엑스 -->
+                  <li id="cross">
+                    <svg
+                      width="100%"
+                      viewBox="0 0 203 203"
+                      fill="#D9D9D9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M65.2374 101.5L0.533447 166.204L36.7961 202.467L101.5 137.763L166.204 202.467L202.467 166.204L137.763 101.5L202.467 36.7961L166.204 0.533417L101.5 65.2373L36.7961 0.533425L0.533455 36.7961L65.2374 101.5Z"
+                      />
+                    </svg>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="player2" class="player-box">
+            <div class="player-status">
+              <div class="player-name">Player 2</div>
+              <div class="align">
+                <label id="label">:</label>
+                <input
+                  class="player-attack-priority"
+                  role="switch"
+                  type="checkbox"
+                />
+              </div>
+            </div>
+            <div class="player-view-box">
+              <div class="player-current-view">
+                <div class="player-current-shape">
+                  <!-- player 2 디폴트 모양: 동그라미, 레드 -->
+                  <svg
+                    width="100%"
+                    viewBox="0 0 203 203"
+                    fill="#FF2E2E"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="0.533447"
+                      y="0.533417"
+                      width="201.933"
+                      height="201.933"
+                      rx="100.967"
+                    />
+                  </svg>
+                </div>
+                <input type="color" class="player-color-selector" />
+              </div>
+              <div class="player-select-shape-options">
+                <ul class="shape-options">
+                  <!-- 원 -->
+                  <li>
+                    <svg
+                      id="circle"
+                      width="100%"
+                      viewBox="0 0 203 203"
+                      fill="#D9D9D9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.533447"
+                        y="0.533417"
+                        width="201.933"
+                        height="201.933"
+                        rx="100.967"
+                      />
+                    </svg>
+                  </li>
+                  <!-- 세모 -->
+                  <li>
+                    <svg
+                      id="triangle"
+                      width="100%"
+                      viewBox="0 0 233 203"
+                      fill="#D9D9D9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M116.5 0.533417L232.967 202.26H0.0328369L116.5 0.533417Z"
+                      />
+                    </svg>
+                  </li>
+                  <!-- 네모 -->
+                  <li id="rectangle">
+                    <svg
+                      width="100%"
+                      viewBox="0 0 203 203"
+                      fill="#D9D9D9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.533447"
+                        y="0.533424"
+                        width="201.933"
+                        height="201.933"
+                      />
+                    </svg>
+                  </li>
+                  <!-- 엑스 -->
+                  <li id="cross">
+                    <svg
+                      width="100%"
+                      viewBox="0 0 203 203"
+                      fill="#D9D9D9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M65.2374 101.5L0.533447 166.204L36.7961 202.467L101.5 137.763L166.204 202.467L202.467 166.204L137.763 101.5L202.467 36.7961L166.204 0.533417L101.5 65.2373L36.7961 0.533425L0.533455 36.7961L65.2374 101.5Z"
+                      />
+                    </svg>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame">
+          <button class="start-button custom-btn btn-6">
+            <span>START</span>
+          </button>
+        </div>
+      </div>
+      <!-- 씬 게임 -->
+      <div class="scene-game flex hide">
+        <div class="icon">
+          <button onclick="location.reload()">
+            <img src="./assets/home.svg" alt="restart" />
+          </button>
+          <button id="super-game">
+            <img src="./assets/super-game.svg" alt="super-game" />
+          </button>
+        </div>
+
+        <!-- 씬 게임 -->
+        <div class="info-board">
+          <div class="players-info-wrapper">
+            <!-- 플레이어 1 정보 보드 start -->
+            <div id="player1-info" class="player-info">
+              <div class="player-name">Player 1</div>
+              <div class="win-nums">
+                🏆
+                <span>0</span>
+              </div>
+              <div class="selected-shape"></div>
+              <div class="undo-nums">
+                Chance:
+                <span>3</span>
+              </div>
+            </div>
+            <!-- 플레이어 1 정보 보드 final -->
+
+            <div class="game-info-wrapper">
+              <div class="turn-info"></div>
+              <div class="game-alert"></div>
+              <button class="undo-btn">Undo</button>
+            </div>
+
+            <!-- 플레이어 2 정보 보드 start -->
+            <div id="player2-info" class="player-info">
+              <div class="player-name">Player 2</div>
+              <div class="win-nums">
+                🏆
+                <span>0</span>
+              </div>
+              <div class="selected-shape"></div>
+              <div class="undo-nums">
+                Chance:
+                <span>3</span>
+              </div>
+            </div>
+            <!-- 플레이어 2 정보 보드 final -->
+          </div>
+        </div>
+
+        <!-- 씬 게임 -->
+        <div class="game-board margin">
+          <ul class="board-matrix">
+            <li class="board-cell"></li>
+            <li class="board-cell"></li>
+            <li class="board-cell"></li>
+            <li class="board-cell"></li>
+            <li class="board-cell"></li>
+            <li class="board-cell"></li>
+            <li class="board-cell"></li>
+            <li class="board-cell"></li>
+            <li class="board-cell"></li>
+          </ul>
+        </div>
+
+        <!-- 슈퍼틱택토 게임 -->
+        <div class="super-game-board"></div>
+
+        <button class="game-again custom-restart-btn btn-6 hide">
+          <span>ONE MORE CHANCE !</span>
+        </button>
+      </div>
+    </main>
+    <script type="module" src="./src/index.js"></script>
+  </body>
+</html>
